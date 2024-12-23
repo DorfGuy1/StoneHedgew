@@ -214,7 +214,15 @@
 
 /obj/item/organ/filling_organ/proc/handle_preggoness()
 	var/datum/sprite_accessory/acc = accessory_type
-	to_chat(owner, span_lovebold("I notice my [src] has grown...")) //dont need to repeat this probably if size cant grow anyway.
+	if(owner.getorganslot(ORGAN_SLOT_BELLY))
+		var/obj/item/organ/belly/bellyussy = owner.getorganslot(ORGAN_SLOT_BELLY)
+		var/datum/sprite_accessory/belly/bellyacc = bellyussy.accessory_type
+		bellyussy.organ_size = pre_pregnancy_size + 1
+		bellyacc.get_icon_state()
+		owner.update_body_parts(TRUE)
+		to_chat(owner, span_lovebold(" I notice my belly has grown"))
+
+		//to_chat(owner, span_lovebold("I notice my [src] has grown...")) //dont need to repeat this probably if size 	cant grow anyway.
 	if(organ_sizeable)
 		if(organ_size < 3)
 			organ_size += 1
