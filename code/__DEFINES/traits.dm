@@ -127,6 +127,7 @@
 #define TRAIT_USEMAGIC "Use Magic"
 #define TRAIT_LEARNMAGIC "Learn Magic" //You dont need usemagic if you have learnmagic.
 #define TRAIT_FEINT_IMMUNITY "Unfeintable"
+#define TRAIT_SOONTOWAKEUP "Soon to WAKE up"
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LEPROSY = span_necrosis("I'm a disgusting leper..."),
@@ -391,6 +392,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NOEMBED			"noembed"
 #define TRAIT_T_RAY_VISIBLE     "t-ray-visible" // Visible on t-ray scanners if the atom/var/level == 1
 #define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
+#define TRAIT_UNPICKPOCKETABLE  "unpickpocketable" //cannot be pickpocketed
 
 //quirk traits
 #define TRAIT_ALCOHOL_TOLERANCE	"alcohol_tolerance"

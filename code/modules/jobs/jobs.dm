@@ -80,7 +80,7 @@ GLOBAL_LIST_INIT(grove_positions, list(
 ))
 
 GLOBAL_LIST_INIT(courtier_positions, list(
-	"Physician",
+	"Guild Physician",
 	"Harlequin",
 	"Head Butler",
 ))
@@ -133,7 +133,7 @@ GLOBAL_LIST_INIT(peasant_positions, list(
 	"Fisher",
 	"Lumberjack",
 	"Towner",
-	"Grabber",
+	"Henchman",
 	"Nightmaster",
 	"Nightswain",
 	"Docker",

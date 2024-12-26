@@ -47,4 +47,5 @@
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/magicstone5e)
 
 	H.verbs |= /mob/proc/haltyell
+	H.verbs += list(/mob/living/carbon/human/proc/magicreport, /mob/living/carbon/human/proc/magiclearn)
 	H.ambushable = FALSE

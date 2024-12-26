@@ -75,19 +75,19 @@
 
 /obj/structure/closet/crate/chest/refilling/Initialize()
 	. = ..()
-	loot_num_to_spawn = rand(max_loot_num_to_spawn)
+	loot_num_to_spawn = rand(1, max_loot_num_to_spawn)
 
 /obj/structure/closet/crate/chest/refilling/Destroy()
 	. = ..()
 
 /obj/structure/closet/crate/chest/refilling/proc/try_reset_chest()
 	//if its found before and area has no players when timer expire.
-	if(found && playerless_in_area(get_area(src), src))
+	if(found && !players_nearby(src.loc, 12))
 		found = FALSE
 		icon_state = "dungeon_chest_1"
 		base_icon_state = "dungeon_chest_1"
 		close()
-		loot_num_to_spawn = rand(max_loot_num_to_spawn)
+		loot_num_to_spawn = rand(1, max_loot_num_to_spawn)
 		update_icon()
 		PopulateContents()
 		if(reset_timer)
@@ -97,6 +97,11 @@
 		var/fast_time = time_to_reset/4
 		reset_timer = addtimer(CALLBACK(src, PROC_REF(try_reset_chest)), fast_time, TIMER_STOPPABLE)
 
+/obj/structure/closet/crate/chest/refilling/proc/players_nearby(turf/T, distance)
+	for (var/mob/living/carbon/human/H in range(distance, T))
+		if (H.client)
+			return TRUE
+	return FALSE
 
 /obj/structure/closet/crate/chest/refilling/PopulateContents()
 	for(var/obj/item/olditem in contents)
@@ -171,7 +176,6 @@
 				/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 70,
 				/obj/item/reagent_containers/glass/bottle/rogue/manapot = 30,
 				/obj/item/reagent_containers/glass/bottle/rogue/antipoisonpot = 20,
-				/obj/item/reagent_containers/glass/bottle/rogue/poison = 10,
 				/obj/item/reagent_containers/glass/bottle/rogue/wine = 10,
 				/obj/item/reagent_containers/glass/bottle/rogue/water = 25
 				)
